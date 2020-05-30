@@ -3,7 +3,7 @@
 | Link                       | Language         | Description                                              | Stats                                                                                             |
 |:--------------------------:|:----------------:|:--------------------------------------------------------:|:-------------------------------------------------------------------------------------------------:|
 | [curly.hpp][curly.hpp]     | [C++17][cpp17]   | Simple cURL C++17 wrapper                                | [![curly.hpp][curly.hpp.stars]][curly.hpp] [![curly.hpp][curly.hpp.forks]][curly.hpp]             |
-| [enduro2d][enduro2d]       | [C++17][cpp17]   | Yet another 2d game engine of dreams                     | [![enduro2d][enduro2d.stars]][enduro2d] [![curly.hpp][curly.hpp.forks]][curly.hpp]             |
+| [enduro2d][enduro2d]       | [C++17][cpp17]   | Yet another 2d game engine of dreams                     | [![enduro2d][enduro2d.stars]][enduro2d] [![curly.hpp][curly.hpp.forks]][curly.hpp]                |
 | [ecoro.erl][ecoro.erl]     | [Erlang][erlang] | Pseudo-coroutines library like lua-coroutines for Erlang | [![ecoro.erl][ecoro.erl.stars]][ecoro.erl] [![ecoro.erl][ecoro.erl.forks]][ecoro.erl]             |
 | [ecs.hpp][ecs.hpp]         | [C++17][cpp17]   | C++17 Entity Component System                            | [![ecs.hpp][ecs.hpp.stars]][ecs.hpp] [![ecs.hpp][ecs.hpp.forks]][ecs.hpp]                         |
 | [enum.hpp][enum.hpp]       | [C++17][cpp17]   | C++17 compile-time enum reflection library               | [![enum.hpp][enum.hpp.stars]][enum.hpp] [![enum.hpp][enum.hpp.forks]][enum.hpp]                   |
@@ -15,10 +15,11 @@
 
 ## Unity Assets
 
-| Link                                   | Description                                  |
-|:--------------------------------------:|:--------------------------------------------:|
-| [Isometric 2.5D Toolset][iso.tools]    | Make 2.5D isometric game in Unity easy       |
-| [Flash Animation Toolset][flash.tools] | Convert your flash animation for Unity easy  |
+| Link                                   | Language     | Description                                 |
+|:--------------------------------------:|:------------:|:-------------------------------------------:|
+| [Isometric 2.5D Toolset][iso.tools]    | [C#][csharp] | Make 2.5D isometric game in Unity easy      |
+| [Flash Animation Toolset][flash.tools] | [C#][csharp] | Convert your flash animation for Unity easy |
+
 
 ## Publications
 
@@ -34,6 +35,7 @@
 [cpp14]: https://en.wikipedia.org/wiki/C%2B%2B14
 [cpp17]: https://en.wikipedia.org/wiki/C%2B%2B17
 [erlang]: https://en.wikipedia.org/wiki/Erlang_(programming_language)
+[csharp]: https://en.wikipedia.org/wiki/C_Sharp_(programming_language)
 
 [curly.hpp]: https://github.com/blackmatov/curly.hpp
 [enduro2d]: https://github.com/enduro2d/enduro2d
@@ -68,8 +70,8 @@
 [pnpoly.h.forks]: https://img.shields.io/github/forks/blackmatov/pnpoly.h?style=social
 [promise.hpp.forks]: https://img.shields.io/github/forks/blackmatov/promise.hpp?style=social
 
-[iso.tools]: http://u3d.as/b26
-[flash.tools]: http://u3d.as/BBx
+[iso.tools]: ./unity_assets/isometric-toolset.md
+[flash.tools]: ./unity_assets/flash-animation-toolset.md
 
 [en.curry]: https://habr.com/post/436488
 [ru.curry]: https://habr.com/post/340722
