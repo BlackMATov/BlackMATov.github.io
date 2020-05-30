@@ -70,8 +70,8 @@
 [pnpoly.h.forks]: https://img.shields.io/github/forks/blackmatov/pnpoly.h?style=social
 [promise.hpp.forks]: https://img.shields.io/github/forks/blackmatov/promise.hpp?style=social
 
-[iso.tools]: ./unity_assets/isometric-toolset.md
-[flash.tools]: ./unity_assets/flash-animation-toolset.md
+[iso.tools]: ./unity-assets/isometric-toolset.md
+[flash.tools]: ./unity-assets/flash-animation-toolset.md
 
 [en.curry]: https://habr.com/post/436488
 [ru.curry]: https://habr.com/post/340722
