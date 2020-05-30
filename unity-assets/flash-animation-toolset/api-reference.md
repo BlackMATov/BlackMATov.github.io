@@ -1,6 +1,6 @@
-### SwfClip
+## SwfClip
 
-```language-csharp
+```csharp
 // Occurs when clip changes
 event Action<SwfClip> OnChangeClipEvent;
 
@@ -11,7 +11,7 @@ event Action<SwfClip> OnChangeSequenceEvent;
 event Action<SwfClip> OnChangeCurrentFrameEvent;
 ```
 
-```language-csharp
+```csharp
 // Gets or sets the animation mesh renderer sorting layer
 // [value] - The sorting layer
 string sortingLayer { get; set; }
@@ -49,7 +49,7 @@ float frameRate { get; }
 int currentLabelCount { get; }
 ```
 
-```language-csharp
+```csharp
 // Gets the current frame mesh bounding volume in local space (Since 1.3.8)
 // [value] - The bounding volume in local space
 Bounds currentLocalBounds { get; }
@@ -59,7 +59,7 @@ Bounds currentLocalBounds { get; }
 Bounds currentWorldBounds { get; }
 ```
 
-```language-csharp
+```csharp
 // Rewind current sequence to begin frame
 void ToBeginFrame();
 
@@ -80,10 +80,9 @@ bool ToNextFrame();
 string GetCurrentFrameLabel(int index);
 ```
 
-<br>
-### SwfClipController
+## SwfClipController
 
-```language-csharp
+```csharp
 // Occurs when the controller stops played clip
 event Action<SwfClipController> OnStopPlayingEvent;
 
@@ -94,7 +93,7 @@ event Action<SwfClipController> OnPlayStoppedEvent;
 event Action<SwfClipController> OnRewindPlayingEvent;
 ```
 
-```language-csharp
+```csharp
 // Controller play modes
 enum PlayModes {
 	// Forward play mode
@@ -148,7 +147,7 @@ bool isPlaying { get; }
 bool isStopped { get; }
 ```
 
-```language-csharp
+```csharp
 // Changes the animation frame with stops it
 // [frame] - The new current frame
 void GotoAndStop(int frame);
@@ -187,16 +186,15 @@ void Play(string sequence);
 void Rewind();
 ```
 
-<br>
-### SwfManager
+## SwfManager
 
-```language-csharp
+```csharp
 // Get cached manager instance from scene or create it (if allowed)
 // [allow_create] - If set to [true] allow create
 static SwfManager GetInstance(bool allow_create);
 ```
 
-```language-csharp
+```csharp
 // Get animation clip count on scene
 // [value] - Clip count
 int clipCount { get; }
@@ -222,7 +220,7 @@ bool useUnscaledDt { get; set; }
 float rateScale { get; set; }
 ```
 
-```language-csharp
+```csharp
 // Pause animation updates
 void Pause();
 
