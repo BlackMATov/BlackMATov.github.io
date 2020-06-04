@@ -7,9 +7,10 @@
 | Link                       | Language         | Description                                              | Stats                                                                                             |
 |:--------------------------:|:----------------:|:--------------------------------------------------------:|:-------------------------------------------------------------------------------------------------:|
 | [curly.hpp][curly.hpp]     | [C++17][cpp17]   | Simple cURL C++17 wrapper                                | [![curly.hpp][curly.hpp.stars]][curly.hpp] [![curly.hpp][curly.hpp.forks]][curly.hpp]             |
-| [enduro2d][enduro2d]       | [C++17][cpp17]   | Yet another 2d game engine of dreams                     | [![enduro2d][enduro2d.stars]][enduro2d] [![curly.hpp][curly.hpp.forks]][curly.hpp]                |
+| [defer.hpp][defer.hpp]     | [C++17][cpp17]   | Go's defer implementation in C++17                       | [![defer.hpp][defer.hpp.stars]][defer.hpp] [![defer.hpp][defer.hpp.forks]][defer.hpp]             |
 | [ecoro.erl][ecoro.erl]     | [Erlang][erlang] | Pseudo-coroutines library like lua-coroutines for Erlang | [![ecoro.erl][ecoro.erl.stars]][ecoro.erl] [![ecoro.erl][ecoro.erl.forks]][ecoro.erl]             |
 | [ecs.hpp][ecs.hpp]         | [C++17][cpp17]   | C++17 Entity Component System                            | [![ecs.hpp][ecs.hpp.stars]][ecs.hpp] [![ecs.hpp][ecs.hpp.forks]][ecs.hpp]                         |
+| [enduro2d][enduro2d]       | [C++17][cpp17]   | Yet another 2d game engine of dreams                     | [![enduro2d][enduro2d.stars]][enduro2d] [![curly.hpp][curly.hpp.forks]][curly.hpp]                |
 | [enum.hpp][enum.hpp]       | [C++17][cpp17]   | C++17 compile-time enum reflection library               | [![enum.hpp][enum.hpp.stars]][enum.hpp] [![enum.hpp][enum.hpp.forks]][enum.hpp]                   |
 | [flat.hpp][flat.hpp]       | [C++17][cpp17]   | Library of flat vector-like based associative containers | [![flat.hpp][flat.hpp.stars]][flat.hpp] [![flat.hpp][flat.hpp.forks]][flat.hpp]                   |
 | [invoke.hpp][invoke.hpp]   | [C++11][cpp11]   | std::invoke/std::apply analogs for C++11/14              | [![invoke.hpp][invoke.hpp.stars]][invoke.hpp] [![invoke.hpp][invoke.hpp.forks]][invoke.hpp]       |
@@ -42,9 +43,10 @@
 [csharp]: https://en.wikipedia.org/wiki/C_Sharp_(programming_language)
 
 [curly.hpp]: https://github.com/blackmatov/curly.hpp
-[enduro2d]: https://github.com/enduro2d/enduro2d
+[defer.hpp]: https://github.com/blackmatov/defer.hpp
 [ecoro.erl]: https://github.com/blackmatov/ecoro.erl
 [ecs.hpp]: https://github.com/blackmatov/ecs.hpp
+[enduro2d]: https://github.com/enduro2d/enduro2d
 [enum.hpp]: https://github.com/blackmatov/enum.hpp
 [flat.hpp]: https://github.com/blackmatov/flat.hpp
 [invoke.hpp]: https://github.com/blackmatov/invoke.hpp
@@ -53,9 +55,10 @@
 [promise.hpp]: https://github.com/blackmatov/promise.hpp
 
 [curly.hpp.stars]: https://img.shields.io/github/stars/blackmatov/curly.hpp?style=social
-[enduro2d.stars]: https://img.shields.io/github/stars/enduro2d/enduro2d?style=social
+[defer.hpp.stars]: https://img.shields.io/github/stars/blackmatov/defer.hpp?style=social
 [ecoro.erl.stars]: https://img.shields.io/github/stars/blackmatov/ecoro.erl?style=social
 [ecs.hpp.stars]: https://img.shields.io/github/stars/blackmatov/ecs.hpp?style=social
+[enduro2d.stars]: https://img.shields.io/github/stars/enduro2d/enduro2d?style=social
 [enum.hpp.stars]: https://img.shields.io/github/stars/blackmatov/enum.hpp?style=social
 [flat.hpp.stars]: https://img.shields.io/github/stars/blackmatov/flat.hpp?style=social
 [invoke.hpp.stars]: https://img.shields.io/github/stars/blackmatov/invoke.hpp?style=social
@@ -64,9 +67,10 @@
 [promise.hpp.stars]: https://img.shields.io/github/stars/blackmatov/promise.hpp?style=social
 
 [curly.hpp.forks]: https://img.shields.io/github/forks/blackmatov/curly.hpp?style=social
-[enduro2d.forks]: https://img.shields.io/github/forks/enduro2d/enduro2d?style=social
+[defer.hpp.forks]: https://img.shields.io/github/forks/blackmatov/defer.hpp?style=social
 [ecoro.erl.forks]: https://img.shields.io/github/forks/blackmatov/ecoro.erl?style=social
 [ecs.hpp.forks]: https://img.shields.io/github/forks/blackmatov/ecs.hpp?style=social
+[enduro2d.forks]: https://img.shields.io/github/forks/enduro2d/enduro2d?style=social
 [enum.hpp.forks]: https://img.shields.io/github/forks/blackmatov/enum.hpp?style=social
 [flat.hpp.forks]: https://img.shields.io/github/forks/blackmatov/flat.hpp?style=social
 [invoke.hpp.forks]: https://img.shields.io/github/forks/blackmatov/invoke.hpp?style=social
