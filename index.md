@@ -1,7 +1,3 @@
-![](images/title-icon.jpg)
-
-# BlackMATov Hub
-
 ## Contacts
 
 | Service  | Links                                                  |
@@ -29,17 +25,29 @@
 ## Unity Assets
 
 | Link                                   | Language     | Description                                 |
-|:--------------------------------------:|:------------:|:-------------------------------------------:|
+|----------------------------------------|:------------:|:-------------------------------------------:|
 | [Isometric 2.5D Toolset][iso.tools]    | [C#][csharp] | Make 2.5D isometric game in Unity easy      |
 | [Flash Animation Toolset][flash.tools] | [C#][csharp] | Convert your flash animation for Unity easy |
 
 ## Publications
 
 | Title                                                       | Links                                       |
-|:-----------------------------------------------------------:|:-------------------------------------------:|
+|-------------------------------------------------------------|:-------------------------------------------:|
 | Currying and partial application in C++14                   | [En][en.curry] / [Ru][ru.curry]             |
 | Isometric Plugin for Unity3D                                | [En][en.iso.tools] / [Ru][ru.iso.tools]     |
 | Flash-animation in Unity3D from scratch. Part one, lyrical. | [En][en.flash.tools] / [Ru][ru.flash.tools] |
+
+## Blog Posts
+
+| Title                              | Date      | Links                                     |
+|------------------------------------|:---------:|:-----------------------------------------:|
+| Выровненные аллокации              | 27 May 13 | [Ru][vyrovnennye-allokacii]               |
+| Аллокации, теги и хуки. Часть 1    | 03 Jun 13 | [Ru][allokatsii-tieghi-i-khuki-chast-1]   |
+| Аллокации, теги и хуки. Часть 2    | 10 Jun 13 | [Ru][allokatsii-tieghi-i-khuki-chast-2]   |
+| Частичный typedef                  | 12 Jun 13 | [Ru][chastichnyi-typedef]                 |
+| Об исключительной пользе explicit  | 16 Jun 13 | [Ru][ob-iskliuchitielnoi-polzie-explicit] |
+| Конструкторы и исключения          | 24 Jun 13 | [Ru][konstruktory-i-iskliuchieniia]       |
+| Scope Stack Allocation             | 01 Aug 13 | [Ru][scope-stack-allocation]              |
 
 [c89]: https://en.wikipedia.org/wiki/ANSI_C#C89
 [cpp11]: https://en.wikipedia.org/wiki/C%2B%2B11
@@ -129,3 +137,11 @@
 [ru.iso.tools]: https://habr.com/post/269653
 [en.flash.tools]: https://habr.com/post/445102
 [ru.flash.tools]: https://habr.com/post/443524
+
+[allokatsii-tieghi-i-khuki-chast-1]: ./posts/allokatsii-tieghi-i-khuki-chast-1.md
+[allokatsii-tieghi-i-khuki-chast-2]: ./posts/allokatsii-tieghi-i-khuki-chast-2.md
+[chastichnyi-typedef]: ./posts/chastichnyi-typedef.md
+[konstruktory-i-iskliuchieniia]: ./posts/konstruktory-i-iskliuchieniia.md
+[ob-iskliuchitielnoi-polzie-explicit]: ./posts/ob-iskliuchitielnoi-polzie-explicit.md
+[scope-stack-allocation]: ./posts/scope-stack-allocation.md
+[vyrovnennye-allokacii]: ./posts/vyrovnennye-allokacii.md
