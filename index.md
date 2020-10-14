@@ -2,7 +2,8 @@
 
 | Service  | Links                                                  |
 |:--------:|:------------------------------------------------------:|
-| e-mail   | [blackmat@mail.ru](mailto:blackmat@mail.ru)            |
+| e-mail   | [blackmatov@gmail.com](mailto:blackmatov@gmail.com)    |
+| telegram | [+7-923-713-1000](https://t.me/blackmatov)             |
 | twitter  | [@BMEngine](https://twitter.com/BMEngine)              |
 | linkedin | [linkedin.com/in/matov](https://linkedin.com/in/matov) |
 
