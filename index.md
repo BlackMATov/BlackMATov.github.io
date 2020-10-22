@@ -40,15 +40,16 @@
 
 ## Blog Posts
 
-| Title                              | Date      | Links                                     |
-|------------------------------------|:---------:|:-----------------------------------------:|
-| Выровненные аллокации              | 27 May 13 | [Ru][vyrovnennye-allokacii]               |
-| Аллокации, теги и хуки. Часть 1    | 03 Jun 13 | [Ru][allokatsii-tieghi-i-khuki-chast-1]   |
-| Аллокации, теги и хуки. Часть 2    | 10 Jun 13 | [Ru][allokatsii-tieghi-i-khuki-chast-2]   |
-| Частичный typedef                  | 12 Jun 13 | [Ru][chastichnyi-typedef]                 |
-| Об исключительной пользе explicit  | 16 Jun 13 | [Ru][ob-iskliuchitielnoi-polzie-explicit] |
-| Конструкторы и исключения          | 24 Jun 13 | [Ru][konstruktory-i-iskliuchieniia]       |
-| Scope Stack Allocation             | 01 Aug 13 | [Ru][scope-stack-allocation]              |
+| Title                                                 | Date      | Links                                     |
+|-------------------------------------------------------|:---------:|:-----------------------------------------:|
+| Гетерогенный поиск в ассоциативных контейнерах на C++ | 16 Oct 20 | [Ru][gietieroghiennyi-poisk]              |
+| Scope Stack Allocation                                | 01 Aug 13 | [Ru][scope-stack-allocation]              |
+| Конструкторы и исключения                             | 24 Jun 13 | [Ru][konstruktory-i-iskliuchieniia]       |
+| Об исключительной пользе explicit                     | 16 Jun 13 | [Ru][ob-iskliuchitielnoi-polzie-explicit] |
+| Частичный typedef                                     | 12 Jun 13 | [Ru][chastichnyi-typedef]                 |
+| Аллокации, теги и хуки. Часть 2                       | 10 Jun 13 | [Ru][allokatsii-tieghi-i-khuki-chast-2]   |
+| Аллокации, теги и хуки. Часть 1                       | 03 Jun 13 | [Ru][allokatsii-tieghi-i-khuki-chast-1]   |
+| Выровненные аллокации                                 | 27 May 13 | [Ru][vyrovnennye-allokacii]               |
 
 [c89]: https://en.wikipedia.org/wiki/ANSI_C#C89
 [cpp11]: https://en.wikipedia.org/wiki/C%2B%2B11
@@ -139,10 +140,11 @@
 [en.flash.tools]: https://habr.com/post/445102
 [ru.flash.tools]: https://habr.com/post/443524
 
-[allokatsii-tieghi-i-khuki-chast-1]: ./posts/allokatsii-tieghi-i-khuki-chast-1.md
-[allokatsii-tieghi-i-khuki-chast-2]: ./posts/allokatsii-tieghi-i-khuki-chast-2.md
-[chastichnyi-typedef]: ./posts/chastichnyi-typedef.md
+[gietieroghiennyi-poisk]: ./posts/gietieroghiennyi-poisk.md
+[scope-stack-allocation]: ./posts/scope-stack-allocation.md
 [konstruktory-i-iskliuchieniia]: ./posts/konstruktory-i-iskliuchieniia.md
 [ob-iskliuchitielnoi-polzie-explicit]: ./posts/ob-iskliuchitielnoi-polzie-explicit.md
-[scope-stack-allocation]: ./posts/scope-stack-allocation.md
+[chastichnyi-typedef]: ./posts/chastichnyi-typedef.md
+[allokatsii-tieghi-i-khuki-chast-2]: ./posts/allokatsii-tieghi-i-khuki-chast-2.md
+[allokatsii-tieghi-i-khuki-chast-1]: ./posts/allokatsii-tieghi-i-khuki-chast-1.md
 [vyrovnennye-allokacii]: ./posts/vyrovnennye-allokacii.md
