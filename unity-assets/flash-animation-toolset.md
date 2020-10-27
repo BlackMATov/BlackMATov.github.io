@@ -26,7 +26,7 @@
 
 ## Usage video
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/uE_XRWZ5KHA" frameborder="0" allowfullscreen></iframe>
+<iframe width="520" height="360" src="https://www.youtube.com/embed/uE_XRWZ5KHA" frameborder="0" allowfullscreen></iframe>
 
 ## Screenshots
 

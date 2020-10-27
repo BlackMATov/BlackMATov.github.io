@@ -25,3 +25,5 @@ Now you can select exported clip and add it to scene or create a prefab.
 
 In instance properties you can change any settings like a sorting layer, play mode, current frame and etc.
 ![](images/user-guide-10.png)
+
+Enjoy!
