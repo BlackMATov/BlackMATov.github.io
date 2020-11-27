@@ -20,6 +20,7 @@
 | [invoke.hpp][invoke.hpp]   | [C++11][cpp11]   | std::invoke/std::apply analogs for C++11/14              | ![invoke.hpp.travis] ![invoke.hpp.appveyor] ![invoke.hpp.codecov]    | ![invoke.hpp.stars] ![invoke.hpp.forks]   |
 | [kari.hpp][kari.hpp]       | [C++17][cpp17]   | Experimental library for currying in C++17               | ![kari.hpp.travis] ![kari.hpp.appveyor] ![kari.hpp.codecov]          | ![kari.hpp.stars] ![kari.hpp.forks]       |
 | [promise.hpp][promise.hpp] | [C++17][cpp17]   | C++ asynchronous promises like a Promises/A+             | ![promise.hpp.travis] ![promise.hpp.appveyor] ![promise.hpp.codecov] | ![promise.hpp.stars] ![promise.hpp.forks] |
+| [vmath.hpp][vmath.hpp]     | [C++17][cpp17]   | C++17 tiny vector math library                           | ![vmath.hpp.travis] ![vmath.hpp.appveyor] ![vmath.hpp.codecov]       | ![vmath.hpp.stars] ![vmath.hpp.forks]     |
 
 ## Unity Assets
 
@@ -65,6 +66,7 @@
 [invoke.hpp]: https://github.com/blackmatov/invoke.hpp
 [kari.hpp]: https://github.com/blackmatov/kari.hpp
 [promise.hpp]: https://github.com/blackmatov/promise.hpp
+[vmath.hpp]: https://github.com/blackmatov/vmath.hpp
 
 [curly.hpp.travis]: https://img.shields.io/travis/blackmatov/curly.hpp/main.svg?logo=travis
 [defer.hpp.travis]: https://img.shields.io/travis/blackmatov/defer.hpp/main.svg?logo=travis
@@ -75,6 +77,7 @@
 [invoke.hpp.travis]: https://img.shields.io/travis/blackmatov/invoke.hpp/main.svg?logo=travis
 [kari.hpp.travis]: https://img.shields.io/travis/blackmatov/kari.hpp/main.svg?logo=travis
 [promise.hpp.travis]: https://img.shields.io/travis/blackmatov/promise.hpp/main.svg?logo=travis
+[vmath.hpp.travis]: https://img.shields.io/travis/blackmatov/vmath.hpp/main.svg?logo=travis
 
 [curly.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/curly-hpp/main.svg?logo=appveyor
 [defer.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/defer-hpp/main.svg?logo=appveyor
@@ -85,6 +88,7 @@
 [invoke.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/invoke-hpp/main.svg?logo=appveyor
 [kari.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/kari-hpp/main.svg?logo=appveyor
 [promise.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/promise-hpp/main.svg?logo=appveyor
+[vmath.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/vmath-hpp/main.svg?logo=appveyor
 
 [curly.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/curly.hpp/main.svg?logo=codecov
 [defer.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/defer.hpp/main.svg?logo=codecov
@@ -95,6 +99,7 @@
 [invoke.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/invoke.hpp/main.svg?logo=codecov
 [kari.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/kari.hpp/main.svg?logo=codecov
 [promise.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/promise.hpp/main.svg?logo=codecov
+[vmath.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/vmath.hpp/main.svg?logo=codecov
 
 [curly.hpp.stars]: https://img.shields.io/github/stars/blackmatov/curly.hpp?style=social
 [defer.hpp.stars]: https://img.shields.io/github/stars/blackmatov/defer.hpp?style=social
@@ -105,6 +110,7 @@
 [invoke.hpp.stars]: https://img.shields.io/github/stars/blackmatov/invoke.hpp?style=social
 [kari.hpp.stars]: https://img.shields.io/github/stars/blackmatov/kari.hpp?style=social
 [promise.hpp.stars]: https://img.shields.io/github/stars/blackmatov/promise.hpp?style=social
+[vmath.hpp.stars]: https://img.shields.io/github/stars/blackmatov/vmath.hpp?style=social
 
 [curly.hpp.forks]: https://img.shields.io/github/forks/blackmatov/curly.hpp?style=social
 [defer.hpp.forks]: https://img.shields.io/github/forks/blackmatov/defer.hpp?style=social
@@ -115,6 +121,7 @@
 [invoke.hpp.forks]: https://img.shields.io/github/forks/blackmatov/invoke.hpp?style=social
 [kari.hpp.forks]: https://img.shields.io/github/forks/blackmatov/kari.hpp?style=social
 [promise.hpp.forks]: https://img.shields.io/github/forks/blackmatov/promise.hpp?style=social
+[vmath.hpp.forks]: https://img.shields.io/github/forks/blackmatov/vmath.hpp?style=social
 
 [iso.tools]: ./unity-assets/isometric-toolset.md
 [flash.tools]: ./unity-assets/flash-animation-toolset.md
