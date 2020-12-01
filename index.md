@@ -36,12 +36,12 @@
 | Currying and partial application in C++14                   | [En][en.curry] / [Ru][ru.curry]             |
 | Isometric Plugin for Unity3D                                | [En][en.iso.tools] / [Ru][ru.iso.tools]     |
 | Flash-animation in Unity3D from scratch. Part one, lyrical. | [En][en.flash.tools] / [Ru][ru.flash.tools] |
+| Гетерогенный поиск в ассоциативных контейнерах на C++       | [Ru][ru.hlookup]                            |
 
 ## Blog Posts
 
 | Title                                                 | Date      | Links                                     |
 |-------------------------------------------------------|:---------:|:-----------------------------------------:|
-| Гетерогенный поиск в ассоциативных контейнерах на C++ | 16 Oct 20 | [Ru][gietieroghiennyi-poisk]              |
 | Scope Stack Allocation                                | 01 Aug 13 | [Ru][scope-stack-allocation]              |
 | Конструкторы и исключения                             | 24 Jun 13 | [Ru][konstruktory-i-iskliuchieniia]       |
 | Об исключительной пользе explicit                     | 16 Jun 13 | [Ru][ob-iskliuchitielnoi-polzie-explicit] |
@@ -132,8 +132,8 @@
 [ru.iso.tools]: https://habr.com/post/269653
 [en.flash.tools]: https://habr.com/post/445102
 [ru.flash.tools]: https://habr.com/post/443524
+[ru.hlookup]: https://habr.com/post/523668
 
-[gietieroghiennyi-poisk]: ./posts/gietieroghiennyi-poisk.md
 [scope-stack-allocation]: ./posts/scope-stack-allocation.md
 [konstruktory-i-iskliuchieniia]: ./posts/konstruktory-i-iskliuchieniia.md
 [ob-iskliuchitielnoi-polzie-explicit]: ./posts/ob-iskliuchitielnoi-polzie-explicit.md
