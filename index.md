@@ -9,18 +9,18 @@
 
 ## Open Source
 
-| Link                       | Language         | Description                                              | Status                                                               | Stats                                                                                             |
-|:--------------------------:|:----------------:|:--------------------------------------------------------:|:--------------------------------------------------------------------:|:-----------------------------------------:|
-| [curly.hpp][curly.hpp]     | [C++17][cpp17]   | Simple cURL C++17 wrapper                                | ![curly.hpp.travis] ![curly.hpp.appveyor] ![curly.hpp.codecov]       | ![curly.hpp.stars] ![curly.hpp.forks]     |
-| [defer.hpp][defer.hpp]     | [C++17][cpp17]   | Go's defer implementation in C++17                       | ![defer.hpp.travis] ![defer.hpp.appveyor] ![defer.hpp.codecov]       | ![defer.hpp.stars] ![defer.hpp.forks]     |
-| [ecs.hpp][ecs.hpp]         | [C++17][cpp17]   | C++17 Entity Component System                            | ![ecs.hpp.travis] ![ecs.hpp.appveyor] ![ecs.hpp.codecov]             | ![ecs.hpp.stars] ![ecs.hpp.forks]         |
-| [enduro2d][enduro2d]       | [C++17][cpp17]   | Yet another 2d game engine of dreams                     | ![enduro2d.travis] ![enduro2d.appveyor] ![enduro2d.codecov]          | ![enduro2d.stars] ![enduro2d.forks]       |
-| [enum.hpp][enum.hpp]       | [C++17][cpp17]   | C++17 compile-time enum reflection library               | ![enum.hpp.travis] ![enum.hpp.appveyor] ![enum.hpp.codecov]          | ![enum.hpp.stars] ![enum.hpp.forks]       |
-| [flat.hpp][flat.hpp]       | [C++17][cpp17]   | Library of flat vector-like based associative containers | ![flat.hpp.travis] ![flat.hpp.appveyor] ![flat.hpp.codecov]          | ![flat.hpp.stars] ![flat.hpp.forks]       |
-| [invoke.hpp][invoke.hpp]   | [C++11][cpp11]   | std::invoke/std::apply analogs for C++11/14              | ![invoke.hpp.travis] ![invoke.hpp.appveyor] ![invoke.hpp.codecov]    | ![invoke.hpp.stars] ![invoke.hpp.forks]   |
-| [kari.hpp][kari.hpp]       | [C++17][cpp17]   | Experimental library for currying in C++17               | ![kari.hpp.travis] ![kari.hpp.appveyor] ![kari.hpp.codecov]          | ![kari.hpp.stars] ![kari.hpp.forks]       |
-| [promise.hpp][promise.hpp] | [C++17][cpp17]   | C++ asynchronous promises like a Promises/A+             | ![promise.hpp.travis] ![promise.hpp.appveyor] ![promise.hpp.codecov] | ![promise.hpp.stars] ![promise.hpp.forks] |
-| [vmath.hpp][vmath.hpp]     | [C++17][cpp17]   | C++17 tiny vector math library                           | ![vmath.hpp.travis] ![vmath.hpp.appveyor] ![vmath.hpp.codecov]       | ![vmath.hpp.stars] ![vmath.hpp.forks]     |
+| Link                       | Language         | Description                                              | Stats                                                                                             |
+|:--------------------------:|:----------------:|:--------------------------------------------------------:|:-----------------------------------------:|
+| [curly.hpp][curly.hpp]     | [C++17][cpp17]   | Simple cURL C++17 wrapper                                | ![curly.hpp.stars] ![curly.hpp.forks]     |
+| [defer.hpp][defer.hpp]     | [C++17][cpp17]   | Go's defer implementation in C++17                       | ![defer.hpp.stars] ![defer.hpp.forks]     |
+| [ecs.hpp][ecs.hpp]         | [C++17][cpp17]   | C++17 Entity Component System                            | ![ecs.hpp.stars] ![ecs.hpp.forks]         |
+| [enduro2d][enduro2d]       | [C++17][cpp17]   | Yet another 2d game engine of dreams                     | ![enduro2d.stars] ![enduro2d.forks]       |
+| [enum.hpp][enum.hpp]       | [C++17][cpp17]   | C++17 compile-time enum reflection library               | ![enum.hpp.stars] ![enum.hpp.forks]       |
+| [flat.hpp][flat.hpp]       | [C++17][cpp17]   | Library of flat vector-like based associative containers | ![flat.hpp.stars] ![flat.hpp.forks]       |
+| [invoke.hpp][invoke.hpp]   | [C++11][cpp11]   | std::invoke/std::apply analogs for C++11/14              | ![invoke.hpp.stars] ![invoke.hpp.forks]   |
+| [kari.hpp][kari.hpp]       | [C++17][cpp17]   | Experimental library for currying in C++17               | ![kari.hpp.stars] ![kari.hpp.forks]       |
+| [promise.hpp][promise.hpp] | [C++17][cpp17]   | C++ asynchronous promises like a Promises/A+             | ![promise.hpp.stars] ![promise.hpp.forks] |
+| [vmath.hpp][vmath.hpp]     | [C++17][cpp17]   | C++17 tiny vector math library                           | ![vmath.hpp.stars] ![vmath.hpp.forks]     |
 
 ## Unity Assets
 
@@ -67,39 +67,6 @@
 [kari.hpp]: https://github.com/blackmatov/kari.hpp
 [promise.hpp]: https://github.com/blackmatov/promise.hpp
 [vmath.hpp]: https://github.com/blackmatov/vmath.hpp
-
-[curly.hpp.travis]: https://img.shields.io/travis/blackmatov/curly.hpp/main.svg?logo=travis
-[defer.hpp.travis]: https://img.shields.io/travis/blackmatov/defer.hpp/main.svg?logo=travis
-[ecs.hpp.travis]: https://img.shields.io/travis/blackmatov/ecs.hpp/main.svg?logo=travis
-[enduro2d.travis]: https://img.shields.io/travis/enduro2d/enduro2d/main.svg?logo=travis
-[enum.hpp.travis]: https://img.shields.io/travis/blackmatov/enum.hpp/main.svg?logo=travis
-[flat.hpp.travis]: https://img.shields.io/travis/blackmatov/flat.hpp/main.svg?logo=travis
-[invoke.hpp.travis]: https://img.shields.io/travis/blackmatov/invoke.hpp/main.svg?logo=travis
-[kari.hpp.travis]: https://img.shields.io/travis/blackmatov/kari.hpp/main.svg?logo=travis
-[promise.hpp.travis]: https://img.shields.io/travis/blackmatov/promise.hpp/main.svg?logo=travis
-[vmath.hpp.travis]: https://img.shields.io/travis/blackmatov/vmath.hpp/main.svg?logo=travis
-
-[curly.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/curly-hpp/main.svg?logo=appveyor
-[defer.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/defer-hpp/main.svg?logo=appveyor
-[ecs.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/ecs-hpp/main.svg?logo=appveyor
-[enduro2d.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/enduro2d/main.svg?logo=appveyor
-[enum.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/enum-hpp/main.svg?logo=appveyor
-[flat.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/flat-hpp/main.svg?logo=appveyor
-[invoke.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/invoke-hpp/main.svg?logo=appveyor
-[kari.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/kari-hpp/main.svg?logo=appveyor
-[promise.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/promise-hpp/main.svg?logo=appveyor
-[vmath.hpp.appveyor]: https://img.shields.io/appveyor/ci/blackmatov/vmath-hpp/main.svg?logo=appveyor
-
-[curly.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/curly.hpp/main.svg?logo=codecov
-[defer.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/defer.hpp/main.svg?logo=codecov
-[ecs.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/ecs.hpp/main.svg?logo=codecov
-[enduro2d.codecov]: https://img.shields.io/codecov/c/github/enduro2d/enduro2d/main.svg?logo=codecov
-[enum.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/enum.hpp/main.svg?logo=codecov
-[flat.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/flat.hpp/main.svg?logo=codecov
-[invoke.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/invoke.hpp/main.svg?logo=codecov
-[kari.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/kari.hpp/main.svg?logo=codecov
-[promise.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/promise.hpp/main.svg?logo=codecov
-[vmath.hpp.codecov]: https://img.shields.io/codecov/c/github/blackmatov/vmath.hpp/main.svg?logo=codecov
 
 [curly.hpp.stars]: https://img.shields.io/github/stars/blackmatov/curly.hpp?style=social
 [defer.hpp.stars]: https://img.shields.io/github/stars/blackmatov/defer.hpp?style=social
