@@ -9,7 +9,7 @@
 
 ## Open Source
 
-| Link                       | Language         | Description                                              | Stats                                                                                             |
+| Link                       | Language         | Description                                              | Stats                                     |
 |:--------------------------:|:----------------:|:--------------------------------------------------------:|:-----------------------------------------:|
 | [curly.hpp][curly.hpp]     | [C++17][cpp17]   | Simple cURL C++17 wrapper                                | ![curly.hpp.stars] ![curly.hpp.forks]     |
 | [defer.hpp][defer.hpp]     | [C++17][cpp17]   | Go's defer implementation in C++17                       | ![defer.hpp.stars] ![defer.hpp.forks]     |
@@ -19,6 +19,7 @@
 | [flat.hpp][flat.hpp]       | [C++17][cpp17]   | Library of flat vector-like based associative containers | ![flat.hpp.stars] ![flat.hpp.forks]       |
 | [invoke.hpp][invoke.hpp]   | [C++11][cpp11]   | std::invoke/std::apply analogs for C++11/14              | ![invoke.hpp.stars] ![invoke.hpp.forks]   |
 | [kari.hpp][kari.hpp]       | [C++17][cpp17]   | Experimental library for currying in C++17               | ![kari.hpp.stars] ![kari.hpp.forks]       |
+| [meta.hpp][meta.hpp]       | [C++20][cpp20]   | C++20 tiny dynamic reflection library                    | ![meta.hpp.stars] ![meta.hpp.forks]       |
 | [promise.hpp][promise.hpp] | [C++17][cpp17]   | C++ asynchronous promises like a Promises/A+             | ![promise.hpp.stars] ![promise.hpp.forks] |
 | [vmath.hpp][vmath.hpp]     | [C++17][cpp17]   | C++17 tiny vector math library                           | ![vmath.hpp.stars] ![vmath.hpp.forks]     |
 
@@ -54,6 +55,7 @@
 [cpp11]: https://en.wikipedia.org/wiki/C%2B%2B11
 [cpp14]: https://en.wikipedia.org/wiki/C%2B%2B14
 [cpp17]: https://en.wikipedia.org/wiki/C%2B%2B17
+[cpp20]: https://en.wikipedia.org/wiki/C%2B%2B20
 [erlang]: https://en.wikipedia.org/wiki/Erlang_(programming_language)
 [csharp]: https://en.wikipedia.org/wiki/C_Sharp_(programming_language)
 
@@ -65,6 +67,7 @@
 [flat.hpp]: https://github.com/blackmatov/flat.hpp
 [invoke.hpp]: https://github.com/blackmatov/invoke.hpp
 [kari.hpp]: https://github.com/blackmatov/kari.hpp
+[meta.hpp]: https://github.com/blackmatov/meta.hpp
 [promise.hpp]: https://github.com/blackmatov/promise.hpp
 [vmath.hpp]: https://github.com/blackmatov/vmath.hpp
 
@@ -76,6 +79,7 @@
 [flat.hpp.stars]: https://img.shields.io/github/stars/blackmatov/flat.hpp?style=social
 [invoke.hpp.stars]: https://img.shields.io/github/stars/blackmatov/invoke.hpp?style=social
 [kari.hpp.stars]: https://img.shields.io/github/stars/blackmatov/kari.hpp?style=social
+[meta.hpp.stars]: https://img.shields.io/github/stars/blackmatov/meta.hpp?style=social
 [promise.hpp.stars]: https://img.shields.io/github/stars/blackmatov/promise.hpp?style=social
 [vmath.hpp.stars]: https://img.shields.io/github/stars/blackmatov/vmath.hpp?style=social
 
@@ -87,6 +91,7 @@
 [flat.hpp.forks]: https://img.shields.io/github/forks/blackmatov/flat.hpp?style=social
 [invoke.hpp.forks]: https://img.shields.io/github/forks/blackmatov/invoke.hpp?style=social
 [kari.hpp.forks]: https://img.shields.io/github/forks/blackmatov/kari.hpp?style=social
+[meta.hpp.forks]: https://img.shields.io/github/forks/blackmatov/meta.hpp?style=social
 [promise.hpp.forks]: https://img.shields.io/github/forks/blackmatov/promise.hpp?style=social
 [vmath.hpp.forks]: https://img.shields.io/github/forks/blackmatov/vmath.hpp?style=social
 
