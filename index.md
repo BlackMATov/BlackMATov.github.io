@@ -95,8 +95,8 @@
 [promise.hpp.forks]: https://img.shields.io/github/forks/blackmatov/promise.hpp?style=social
 [vmath.hpp.forks]: https://img.shields.io/github/forks/blackmatov/vmath.hpp?style=social
 
-[iso.tools]: ./unity-assets/isometric-toolset.md
-[flash.tools]: ./unity-assets/flash-animation-toolset.md
+[iso.tools]: https://github.com/blackmatov/unity-iso-tools
+[flash.tools]: https://github.com/blackmatov/unity-flash-tools
 
 [en.curry]: https://habr.com/post/436488
 [ru.curry]: https://habr.com/post/340722
