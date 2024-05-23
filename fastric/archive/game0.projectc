@@ -81,7 +81,7 @@ http_cache = 0
 max_resources = 1024
 
 [input]
-repeat_delay = 0.5
+repeat_delay = 0.2
 repeat_interval = 0.2
 gamepads = /builtins/input/default.gamepadsc
 game_binding = /builtins/input/all.input_bindingc
