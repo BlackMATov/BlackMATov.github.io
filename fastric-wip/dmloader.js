@@ -49,6 +49,10 @@ var CUSTOM_PARAMETERS = {
         var prevInnerWidth = -1;
         var prevInnerHeight = -1;
         
+        buttonHeight = 42;
+        
+        
+        buttonHeight = 42;
         
         // Hack for iOS when exit from Fullscreen mode
         if (is_iOS) {
@@ -70,27 +74,35 @@ var CUSTOM_PARAMETERS = {
         var targetRatio = width / height;
         var actualRatio = innerWidth / innerHeight;
     
-    
-    
-        //Fit
-        if (actualRatio > targetRatio) {
-            width = innerHeight * targetRatio;
-            height = innerHeight;
-            app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
-            app_container.style.marginTop = "0px";
+        //Downscale fit
+        if (innerWidth < width || innerHeight < height) {
+            if (actualRatio > targetRatio) {
+                width = innerHeight * targetRatio;
+                height = innerHeight;
+                app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
+                app_container.style.marginTop = "0px";
+            }
+            else {
+                width = innerWidth;
+                height = innerWidth / targetRatio;
+                app_container.style.marginLeft = "0px";
+                app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
+            }
         }
         else {
-            width = innerWidth;
-            height = innerWidth / targetRatio;
-            app_container.style.marginLeft = "0px";
+            app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
             app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
         }
     
     
+    
+    
+        var dpi = 1;
+    
         app_container.style.width = width + "px";
         app_container.style.height = height + buttonHeight + "px";
-        game_canvas.width = width;
-        game_canvas.height = height;
+        game_canvas.width = Math.floor(width * dpi);
+        game_canvas.height = Math.floor(height * dpi);
     }
 }
 
@@ -105,8 +117,8 @@ var FileLoader = {
     },
     // do xhr request with retries
     request: function(url, method, responseType, currentAttempt) {
-        if (typeof method === 'undefined') throw "No method specified";
-        if (typeof method === 'responseType') throw "No responseType specified";
+        if (typeof method === 'undefined') throw TypeError("No method specified");
+        if (typeof method === 'responseType') throw TypeError("No responseType specified");
         if (typeof currentAttempt === 'undefined') currentAttempt = 0;
         var obj = {
             send: function() {
@@ -197,8 +209,8 @@ var FileLoader = {
 
 
 var EngineLoader = {
-    wasm_size: 3094576,
-    wasmjs_size: 340459,
+    wasm_size: 3200464,
+    wasmjs_size: 341682,
     asmjs_size: 4000000,
     wasm_instantiate_progress: 0,
 
@@ -216,6 +228,9 @@ var EngineLoader = {
             },
             function(error) { throw error; },
             function(wasm) {
+                if (wasm.byteLength != EngineLoader.wasm_size) {
+                    throw "Invalid wasm size. Expected: " + EngineLoader.wasm_size + ", actual: " + wasm.byteLength;
+                }
                 var wasmInstantiate = WebAssembly.instantiate(new Uint8Array(wasm), imports).then(function(output) {
                     successCallback(output.instance);
                 }).catch(function(e) {
@@ -316,7 +331,7 @@ var EngineLoader = {
         GameArchiveLoader.loadArchiveDescription('/archive_files.json');
 
         // move resize callback setup here to make possible to override callback
-        // from outside of dmlodaer.js
+        // from outside of dmloader.js
         if (typeof CUSTOM_PARAMETERS["resize_window_callback"] === "function") {
             var callback = CUSTOM_PARAMETERS["resize_window_callback"]
             callback();
@@ -366,7 +381,7 @@ var GameArchiveLoader = {
     },
 
     addListener: function(list, callback) {
-        if (typeof callback !== 'function') throw "Invalid callback registration";
+        if (typeof callback !== 'function') throw TypeError("Invalid callback registration");
         list.push(callback);
     },
     notifyListeners: function(list, data) {
@@ -458,7 +473,7 @@ var GameArchiveLoader = {
 
     downloadPiece: function(file, index) {
         if (index < file.lastRequestedPiece) {
-            throw "Request out of order";
+            throw RangeError("Request out of order: " + file.name + ", index: " + index + ", last requested piece: " + file.lastRequestedPiece);
         }
 
         var piece = file.pieces[index];
@@ -495,10 +510,10 @@ var GameArchiveLoader = {
             var start = piece.offset;
             var end = start + piece.data.length;
             if (0 > start) {
-                throw "Buffer underflow";
+                throw RangeError("Buffer underflow. Start: " + start);
             }
             if (end > file.data.length) {
-                throw "Buffer overflow";
+                throw RangeError("Buffer overflow. End : " + end + ", data length: " + file.data.length);
             }
             file.data.set(piece.data, piece.offset);
         }
@@ -529,7 +544,7 @@ var GameArchiveLoader = {
             actualSize += file.pieces[i].dataLength;
         }
         if (actualSize != file.size) {
-            throw "Unexpected data size";
+            throw "Unexpected data size: " + file.name + ", expected size: " + file.size + ", actual size: " + actualSize;
         }
 
         // verify the pieces
@@ -543,13 +558,13 @@ var GameArchiveLoader = {
                 if (0 < i) {
                     var previous = pieces[i - 1];
                     if (previous.offset + previous.dataLength > start) {
-                        throw "Segment underflow";
+                        throw RangeError("Segment underflow in file: " + file.name + ", offset: " + (previous.offset + previous.dataLength) + " , start: " + start);
                     }
                 }
                 if (pieces.length - 2 > i) {
                     var next = pieces[i + 1];
                     if (end > next.offset) {
-                        throw "Segment overflow";
+                        throw RangeError("Segment overflow in file: " + file.name + ", offset: " + next.offset + ", end: " + end);
                     }
                 }
             }
@@ -612,7 +627,7 @@ var ProgressUpdater = {
     listeners: [],
 
     addListener: function(callback) {
-        if (typeof callback !== 'function') throw "Invalid callback registration";
+        if (typeof callback !== 'function') throw TypeError("Invalid callback registration");
         this.listeners.push(callback);
     },
 
