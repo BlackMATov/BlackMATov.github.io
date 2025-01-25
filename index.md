@@ -26,10 +26,10 @@
 
 ## Unity Assets
 
-| Link                                   | Language     | Description                                 |
-|----------------------------------------|:------------:|:-------------------------------------------:|
-| [Isometric 2.5D Toolset][iso.tools]    | [C#][csharp] | Make 2.5D isometric game in Unity easy      |
-| [Flash Animation Toolset][flash.tools] | [C#][csharp] | Convert your flash animation for Unity easy |
+| Link                                   | Language     | Description                                 | Stats                                     |
+|:--------------------------------------:|:------------:|:-------------------------------------------:|:-----------------------------------------:|
+| [Isometric 2.5D Toolset][iso.tools]    | [C#][csharp] | Make 2.5D isometric game in Unity easy      | ![iso.tools.stars] ![iso.tools.forks]     |
+| [Flash Animation Toolset][flash.tools] | [C#][csharp] | Convert your flash animation for Unity easy | ![flash.tools.stars] ![flash.tools.forks] |
 
 ## Publications
 
@@ -101,6 +101,10 @@
 
 [iso.tools]: https://github.com/blackmatov/unity-iso-tools
 [flash.tools]: https://github.com/blackmatov/unity-flash-tools
+[iso.tools.stars]: https://img.shields.io/github/stars/blackmatov/unity-iso-tools?style=social
+[flash.tools.stars]: https://img.shields.io/github/stars/blackmatov/unity-flash-tools?style=social
+[iso.tools.forks]: https://img.shields.io/github/forks/blackmatov/unity-iso-tools?style=social
+[flash.tools.forks]: https://img.shields.io/github/forks/blackmatov/unity-flash-tools?style=social
 
 [en.curry]: https://habr.com/post/436488
 [ru.curry]: https://habr.com/post/340722
