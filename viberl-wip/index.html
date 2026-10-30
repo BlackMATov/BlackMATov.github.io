@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VibeRL</title>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            color: #8ab;
+            font: 16px monospace;
+        }
+
+        /* the game draws 1280x960, the page only scales it to fit the window */
+        canvas {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: min(100vw, 100vh * 4 / 3);
+            height: min(100vh, 100vw * 3 / 4);
+            outline: none;
+        }
+
+        #canvas {
+            visibility: hidden;
+        }
+
+        #status {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="status">Loading...</div>
+    <canvas id="canvas" tabindex="0" oncontextmenu="event.preventDefault()"></canvas>
+
+    <script>
+        var canvas = document.getElementById('canvas');
+        var statusText = document.getElementById('status');
+
+        // keys go to the game, not to scrolling the page
+        window.addEventListener('keydown', function (e) {
+            if ([' ', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Tab', 'F2', 'F3', 'F5', 'F6'].indexOf(e.key) >= 0) {
+                e.preventDefault();
+            }
+        });
+        window.addEventListener('click', function () { canvas.focus(); });
+
+        canvas.addEventListener('webglcontextlost', function (e) {
+            statusText.textContent = 'The graphics context was lost, reload the page.';
+            e.preventDefault();
+        });
+
+        var Module = {
+            arguments: ['./game.love'],
+            INITIAL_MEMORY: 67108864,
+            printErr: console.error.bind(console),
+            canvas: canvas,
+            totalDependencies: 0,
+            remainingDependencies: 0,
+            setStatus: function (text) {
+                if (text) {
+                    statusText.textContent = text;
+                } else if (Module.remainingDependencies === 0) {
+                    statusText.style.display = 'none';
+                    canvas.style.visibility = 'visible';
+                    canvas.focus();
+                }
+            },
+            monitorRunDependencies: function (left) {
+                this.remainingDependencies = left;
+                this.totalDependencies = Math.max(this.totalDependencies, left);
+                Module.setStatus(left ? 'Loading... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : '');
+            },
+        };
+
+        window.onerror = function () {
+            statusText.style.display = 'flex';
+            statusText.textContent = 'Something went wrong, see the browser console.';
+        };
+    </script>
+    <script src="game.js"></script>
+    <script async src="love.js" onload="Love(Module)"></script>
+</body>
+</html>
