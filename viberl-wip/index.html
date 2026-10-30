@@ -2,26 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>VibeRL</title>
     <style>
         html, body {
             margin: 0;
             height: 100%;
             overflow: hidden;
+            overscroll-behavior: none;
             background: #000;
             color: #8ab;
             font: 16px monospace;
         }
 
-        /* the game draws 1280x960, the page only scales it to fit the window */
+        /* the canvas takes the whole window and the game lays its frame out to fit it:
+           SDL reads this CSS size on every resize, the window in conf.lua is resizable */
         canvas {
-            position: absolute;
+            position: fixed;
             inset: 0;
-            margin: auto;
-            width: min(100vw, 100vh * 4 / 3);
-            height: min(100vh, 100vw * 3 / 4);
+            width: 100%;
+            height: 100%;
             outline: none;
+            /* swipes walk, so no scrolling, zooming or long-press menus over the game */
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
         }
 
         #canvas {
@@ -35,11 +41,51 @@
             align-items: center;
             justify-content: center;
         }
+
+        #no-webgl {
+            display: none;
+            box-sizing: border-box;
+            max-width: 40em;
+            margin: 0 auto;
+            padding: 48px 16px;
+            line-height: 1.5;
+        }
+
+        #no-webgl h1 {
+            color: #ec5;
+            font-size: 20px;
+        }
+
+        #no-webgl a {
+            color: #6cf;
+        }
+
+        #no-webgl code {
+            color: #fff;
+        }
+
+        #no-webgl li {
+            margin-bottom: 0.5em;
+        }
     </style>
 </head>
 <body>
     <div id="status">Loading...</div>
     <canvas id="canvas" tabindex="0" oncontextmenu="event.preventDefault()"></canvas>
+
+    <!-- LÖVE's own message for this is a misleading "Unable to create OpenGL window" -->
+    <div id="no-webgl">
+        <h1>The game needs WebGL, and this browser could not start it.</h1>
+        <p>WebGL is the browser's 3D graphics. It is turned off or failed to start here. Things that usually help:</p>
+        <ul>
+            <li>Firefox on Windows: open <code>about:config</code>, set <code>webgl.disable-angle</code> to <code>true</code> and restart the browser.</li>
+            <li>Turn on hardware acceleration in the browser settings (Firefox: Settings &rarr; General &rarr; Performance; Chrome and Edge: Settings &rarr; System).</li>
+            <li>Check that WebGL is not disabled: <code>webgl.disabled</code> in Firefox's <code>about:config</code>, or a privacy extension that blocks it.</li>
+            <li>Update the video card driver from the vendor's site (NVIDIA, AMD, Intel).</li>
+            <li>Try another browser.</li>
+        </ul>
+        <p>To check WebGL on its own, open <a href="https://get.webgl.org/" target="_blank" rel="noopener">get.webgl.org</a>: it shows a spinning cube when WebGL works. Firefox explains why it failed in <code>about:support</code>, under Graphics.</p>
+    </div>
 
     <script>
         var canvas = document.getElementById('canvas');
@@ -85,8 +131,33 @@
             statusText.style.display = 'flex';
             statusText.textContent = 'Something went wrong, see the browser console.';
         };
+
+        function loadScript(src, onload) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.onload = onload;
+            document.body.appendChild(script);
+        }
+
+        // the same request love.js makes, on a canvas of its own so the game's stays untouched
+        function hasWebGL() {
+            try {
+                return !!document.createElement('canvas').getContext('webgl', { alpha: false });
+            } catch (e) {
+                return false;
+            }
+        }
+
+        if (hasWebGL()) {
+            loadScript('game.js', function () {
+                loadScript('love.js', function () { Love(Module); });
+            });
+        } else {
+            statusText.style.display = 'none';
+            document.getElementById('no-webgl').style.display = 'block';
+            document.documentElement.style.overflow = 'auto';
+            document.body.style.overflow = 'auto';
+        }
     </script>
-    <script src="game.js"></script>
-    <script async src="love.js" onload="Love(Module)"></script>
 </body>
 </html>
