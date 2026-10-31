@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VibeRL records</title>
+    <style>
+        html, body {
+            margin: 0;
+            background: #000;
+            color: #8ab;
+            font: 16px monospace;
+        }
+
+        main {
+            box-sizing: border-box;
+            max-width: 44em;
+            margin: 0 auto;
+            padding: 24px 16px 48px;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #ec5;
+            font-size: 20px;
+            margin: 0 0 8px;
+        }
+
+        a {
+            color: #6cf;
+        }
+
+        button {
+            font: inherit;
+            color: #fff;
+            background: #234;
+            border: 1px solid #456;
+            border-radius: 4px;
+            padding: 6px 12px;
+            margin: 4px 8px 4px 0;
+            cursor: pointer;
+        }
+
+        button.danger {
+            background: #411;
+            border-color: #733;
+        }
+
+        .record {
+            border-top: 1px solid #234;
+            padding: 12px 0;
+        }
+
+        .name {
+            color: #fff;
+        }
+
+        .won {
+            color: #ec5;
+        }
+
+        .died {
+            color: #e66;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Records of games</h1>
+        <p>Every game played in this browser is recorded: the actions and the levels' seeds, to replay with <code>love . --replay &lt;file&gt;</code>. The oldest ones go when the browser's storage is full. <a href="index.html">Back to the game</a></p>
+        <div id="all"></div>
+        <div id="list"></div>
+    </main>
+
+    <script>
+        // what index.html stores the records under, see RECORD in main.lua
+        var RECORD_KEY = 'viberl-record:';
+
+        function recordKeys() {
+            var keys = [];
+            try {
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    if (key.lastIndexOf(RECORD_KEY, 0) === 0) {
+                        keys.push(key);
+                    }
+                }
+            } catch (e) {
+                // the storage is off in this browser, there is nothing to list
+            }
+            // named by their date, the newest first
+            return keys.sort().reverse();
+        }
+
+        function fileName(key) {
+            return 'viberl-' + key.slice(RECORD_KEY.length) + '.txt';
+        }
+
+        // how the game went, from the record's lines
+        function summary(text) {
+            var end = text.match(/\nend (\w+) (\d+) (\d+)/);
+            var depths = text.match(/\nlevel \d+/g) || [];
+            var actions = text.match(/\n-?\d+ -?\d+ -?\d+ -?\d+ \w+/g) || [];
+            var sandbox = /\nsandbox true/.test(text) ? ', the sandbox' : '';
+            if (end) {
+                var how = end[1] === 'won' ? 'won' : end[1] === 'died' ? 'died' : 'left';
+                return { how: how, text: how + ' on depth ' + end[2] + ' at turn ' + end[3] + ', ' + actions.length + ' actions' + sandbox };
+            }
+            var depth = depths.length ? depths[depths.length - 1].slice(7) : '?';
+            return { how: '', text: 'not finished, depth ' + depth + ', ' + actions.length + ' actions' + sandbox };
+        }
+
+        function download(name, text) {
+            var url = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = name;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        }
+
+        // a phone can hand the file to a messenger or the mail instead of its downloads
+        function canShare() {
+            try {
+                return !!(navigator.canShare && navigator.canShare({ files: [new File(['x'], 'x.txt', { type: 'text/plain' })] }));
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function share(name, text) {
+            navigator.share({ files: [new File([text], name, { type: 'text/plain' })], title: name }).catch(function () {});
+        }
+
+        function button(label, onclick, danger) {
+            var element = document.createElement('button');
+            element.textContent = label;
+            element.onclick = onclick;
+            if (danger) {
+                element.className = 'danger';
+            }
+            return element;
+        }
+
+        function allText(keys) {
+            return keys.map(function (key) { return localStorage.getItem(key) || ''; }).join('\n');
+        }
+
+        function render() {
+            var keys = recordKeys();
+            var all = document.getElementById('all');
+            var list = document.getElementById('list');
+            all.textContent = '';
+            list.textContent = '';
+
+            if (!keys.length) {
+                list.textContent = 'No records yet: play a game first.';
+                return;
+            }
+
+            // one file with all of them, a blank line between two records
+            all.appendChild(button('Download all (' + keys.length + ')', function () {
+                download('viberl-records.txt', allText(recordKeys()));
+            }));
+            if (canShare()) {
+                all.appendChild(button('Share all', function () {
+                    share('viberl-records.txt', allText(recordKeys()));
+                }));
+            }
+            all.appendChild(button('Delete all', function () {
+                if (confirm('Delete all ' + keys.length + ' records?')) {
+                    keys.forEach(function (key) { localStorage.removeItem(key); });
+                    render();
+                }
+            }, true));
+
+            keys.forEach(function (key) {
+                var text = localStorage.getItem(key) || '';
+                var info = summary(text);
+                var row = document.createElement('div');
+                row.className = 'record';
+
+                var name = document.createElement('div');
+                name.className = 'name';
+                name.textContent = key.slice(RECORD_KEY.length);
+                var how = document.createElement('div');
+                how.className = info.how;
+                how.textContent = info.text + ', ' + Math.ceil(text.length / 1024) + ' KB';
+                row.appendChild(name);
+                row.appendChild(how);
+
+                row.appendChild(button('Download', function () { download(fileName(key), text); }));
+                if (canShare()) {
+                    row.appendChild(button('Share', function () { share(fileName(key), text); }));
+                }
+                row.appendChild(button('Delete', function () {
+                    if (confirm('Delete the record ' + key.slice(RECORD_KEY.length) + '?')) {
+                        localStorage.removeItem(key);
+                        render();
+                    }
+                }, true));
+                list.appendChild(row);
+            });
+        }
+
+        render();
+    </script>
+</body>
+</html>

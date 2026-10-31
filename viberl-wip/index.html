@@ -104,9 +104,64 @@
             e.preventDefault();
         });
 
+        // the game prints the lines of its records of games (RECORD in main.lua): they go to
+        // the browser's storage at once, love.js's own files are kept only when the page is
+        // closed properly, which a phone seldom does; records.html lists them for downloading
+        var RECORD_PREFIX = 'viberl-record ';
+        var RECORD_KEY = 'viberl-record:';
+        var recordTexts = {};
+
+        // the oldest record other than the one being written, to make room in the storage
+        function oldestRecord(except) {
+            var oldest = null;
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key.lastIndexOf(RECORD_KEY, 0) === 0 && key !== except && (oldest === null || key < oldest)) {
+                    oldest = key;
+                }
+            }
+            return oldest;
+        }
+
+        function storeRecordLine(text) {
+            var rest = text.slice(RECORD_PREFIX.length);
+            var space = rest.indexOf(' ');
+            var key = RECORD_KEY + rest.slice(0, space);
+            if (!(key in recordTexts)) {
+                recordTexts[key] = localStorage.getItem(key) || '';
+            }
+            recordTexts[key] += rest.slice(space + 1) + '\n';
+
+            // records are named by their date, so the oldest goes first when the storage is full
+            for (;;) {
+                try {
+                    localStorage.setItem(key, recordTexts[key]);
+                    return;
+                } catch (e) {
+                    var oldest = oldestRecord(key);
+                    if (oldest === null) {
+                        console.warn('no room for the record', key);
+                        return;
+                    }
+                    localStorage.removeItem(oldest);
+                }
+            }
+        }
+
         var Module = {
             arguments: ['./game.love'],
             INITIAL_MEMORY: 67108864,
+            print: function (text) {
+                if (text.lastIndexOf(RECORD_PREFIX, 0) === 0) {
+                    try {
+                        storeRecordLine(text);
+                    } catch (e) {
+                        console.warn('the record line was not stored', e);
+                    }
+                } else {
+                    console.log(text);
+                }
+            },
             printErr: console.error.bind(console),
             canvas: canvas,
             totalDependencies: 0,
