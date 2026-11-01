@@ -102,12 +102,15 @@
             var depths = text.match(/\nlevel \d+/g) || [];
             var actions = text.match(/\n-?\d+ -?\d+ -?\d+ -?\d+ \w+/g) || [];
             var sandbox = /\nsandbox true/.test(text) ? ', the sandbox' : '';
+            // a record replays only with the version of the game that made it
+            var version = text.match(/\nversion (\S+)/);
+            var made = ', version ' + (version ? version[1] : 'unknown');
             if (end) {
                 var how = end[1] === 'won' ? 'won' : end[1] === 'died' ? 'died' : 'left';
-                return { how: how, text: how + ' on depth ' + end[2] + ' at turn ' + end[3] + ', ' + actions.length + ' actions' + sandbox };
+                return { how: how, text: how + ' on depth ' + end[2] + ' at turn ' + end[3] + ', ' + actions.length + ' actions' + sandbox + made };
             }
             var depth = depths.length ? depths[depths.length - 1].slice(7) : '?';
-            return { how: '', text: 'not finished, depth ' + depth + ', ' + actions.length + ' actions' + sandbox };
+            return { how: '', text: 'not finished, depth ' + depth + ', ' + actions.length + ' actions' + sandbox + made };
         }
 
         function download(name, text) {
