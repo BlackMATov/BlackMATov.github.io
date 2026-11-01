@@ -105,11 +105,17 @@
         });
 
         // the game prints the lines of its records of games (RECORD in main.lua): they go to
-        // the browser's storage at once, love.js's own files are kept only when the page is
-        // closed properly, which a phone seldom does; records.html lists them for downloading
+        // the browser's storage, love.js's own files are kept only when the page is closed
+        // properly, which a phone seldom does; records.html lists them for downloading. Not
+        // at every line: every write is of the whole record, which grows all game long, and
+        // on a phone that slowed every step down the more the deeper; so every few seconds,
+        // and when the page is hidden, which a phone does reliably before it closes one
         var RECORD_PREFIX = 'viberl-record ';
         var RECORD_KEY = 'viberl-record:';
+        var RECORD_SAVE_DELAY = 3000;
         var recordTexts = {};
+        var unsavedRecords = {};
+        var saveTimer = null;
 
         // the oldest record other than the one being written, to make room in the storage
         function oldestRecord(except) {
@@ -123,15 +129,7 @@
             return oldest;
         }
 
-        function storeRecordLine(text) {
-            var rest = text.slice(RECORD_PREFIX.length);
-            var space = rest.indexOf(' ');
-            var key = RECORD_KEY + rest.slice(0, space);
-            if (!(key in recordTexts)) {
-                recordTexts[key] = localStorage.getItem(key) || '';
-            }
-            recordTexts[key] += rest.slice(space + 1) + '\n';
-
+        function saveRecord(key) {
             // records are named by their date, so the oldest goes first when the storage is full
             for (;;) {
                 try {
@@ -148,8 +146,58 @@
             }
         }
 
+        function saveRecords() {
+            if (saveTimer !== null) {
+                clearTimeout(saveTimer);
+                saveTimer = null;
+            }
+            for (var key in unsavedRecords) {
+                saveRecord(key);
+            }
+            unsavedRecords = {};
+        }
+
+        function storeRecordLine(text) {
+            var rest = text.slice(RECORD_PREFIX.length);
+            var space = rest.indexOf(' ');
+            var key = RECORD_KEY + rest.slice(0, space);
+            if (!(key in recordTexts)) {
+                recordTexts[key] = localStorage.getItem(key) || '';
+            }
+            recordTexts[key] += rest.slice(space + 1) + '\n';
+
+            unsavedRecords[key] = true;
+            if (saveTimer === null) {
+                saveTimer = setTimeout(function () {
+                    try {
+                        saveRecords();
+                    } catch (e) {
+                        console.warn('the records were not stored', e);
+                    }
+                }, RECORD_SAVE_DELAY);
+            }
+        }
+
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'hidden') {
+                saveRecords();
+            }
+        });
+        window.addEventListener('pagehide', saveRecords);
+
+        // index.html?tv=0 starts without the old TV look and ?minimap=0 without the minimap,
+        // a phone has no T and M to turn them off; ?perf=1 shows what the frames cost; they
+        // go together, ?perf=1&minimap=0
+        var gameArguments = ['./game.love'];
+        var pageOptions = { 'tv=0': '--no-tv', 'minimap=0': '--no-minimap', 'perf=1': '--perf' };
+        for (var option in pageOptions) {
+            if (new RegExp('[?&]' + option + '(&|$)').test(location.search)) {
+                gameArguments.push(pageOptions[option]);
+            }
+        }
+
         var Module = {
-            arguments: ['./game.love'],
+            arguments: gameArguments,
             INITIAL_MEMORY: 67108864,
             print: function (text) {
                 if (text.lastIndexOf(RECORD_PREFIX, 0) === 0) {
