@@ -75,6 +75,10 @@
     <script>
         var RECORD_KEY = 'thegoblinstory-record:';
 
+        function formatText(template, values) {
+            return template.replace(/\{(\w+)\}/g, function (_, key) { return values[key]; });
+        }
+
         function recordKeys() {
             var keys = [];
             try {
@@ -96,15 +100,21 @@
             var end = text.match(/\nend (\w+) (\d+) (\d+)/);
             var depths = text.match(/\nlevel \d+/g) || [];
             var actions = text.match(/\n-?\d+ -?\d+ -?\d+ -?\d+ \w+/g) || [];
-            var sandbox = /\nsandbox true/.test(text) ? ', the sandbox' : '';
             var version = text.match(/\nversion (\S+)/);
-            var made = ', version ' + (version ? version[1] : 'unknown');
+            var details = {
+                depth: depths.length ? depths[depths.length - 1].slice(7) : '?',
+                count: actions.length,
+                sandbox: /\nsandbox true/.test(text) ? ", the sandbox" : '',
+                version: formatText(", version {version}", { version: version ? version[1] : "unknown" })
+            };
             if (end) {
                 var how = end[1] === 'won' ? 'won' : end[1] === 'died' ? 'died' : 'left';
-                return { how: how, text: how + ' on depth ' + end[2] + ' at turn ' + end[3] + ', ' + actions.length + ' actions' + sandbox + made };
+                details.result = how === 'won' ? "won" : how === 'died' ? "died" : "left";
+                details.depth = end[2];
+                details.turn = end[3];
+                return { how: how, text: formatText("{result} on depth {depth} at turn {turn}, {count} actions{sandbox}{version}", details) };
             }
-            var depth = depths.length ? depths[depths.length - 1].slice(7) : '?';
-            return { how: '', text: 'not finished, depth ' + depth + ', ' + actions.length + ' actions' + sandbox + made };
+            return { how: '', text: formatText("not finished, depth {depth}, {count} actions{sandbox}{version}", details) };
         }
 
         function download(name, text) {
@@ -152,20 +162,20 @@
             list.textContent = '';
 
             if (!keys.length) {
-                list.textContent = 'No records yet: play a game first.';
+                list.textContent = "No records yet: play a game first.";
                 return;
             }
 
-            all.appendChild(button('Download all (' + keys.length + ')', function () {
+            all.appendChild(button(formatText("Download all ({count})", { count: keys.length }), function () {
                 download('thegoblinstory-records.txt', allText(recordKeys()));
             }));
             if (canShare()) {
-                all.appendChild(button('Share all', function () {
+                all.appendChild(button("Share all", function () {
                     share('thegoblinstory-records.txt', allText(recordKeys()));
                 }));
             }
-            all.appendChild(button('Delete all', function () {
-                if (confirm('Delete all ' + keys.length + ' records?')) {
+            all.appendChild(button("Delete all", function () {
+                if (confirm(formatText("Delete all {count} records?", { count: keys.length }))) {
                     keys.forEach(function (key) { localStorage.removeItem(key); });
                     render();
                 }
@@ -182,16 +192,16 @@
                 name.textContent = key.slice(RECORD_KEY.length);
                 var how = document.createElement('div');
                 how.className = info.how;
-                how.textContent = info.text + ', ' + Math.ceil(text.length / 1024) + ' KB';
+                how.textContent = formatText("{summary}, {size} KB", { summary: info.text, size: Math.ceil(text.length / 1024) });
                 row.appendChild(name);
                 row.appendChild(how);
 
-                row.appendChild(button('Download', function () { download(fileName(key), text); }));
+                row.appendChild(button("Download", function () { download(fileName(key), text); }));
                 if (canShare()) {
-                    row.appendChild(button('Share', function () { share(fileName(key), text); }));
+                    row.appendChild(button("Share", function () { share(fileName(key), text); }));
                 }
-                row.appendChild(button('Delete', function () {
-                    if (confirm('Delete the record ' + key.slice(RECORD_KEY.length) + '?')) {
+                row.appendChild(button("Delete", function () {
+                    if (confirm(formatText("Delete the record {name}?", { name: key.slice(RECORD_KEY.length) }))) {
                         localStorage.removeItem(key);
                         render();
                     }

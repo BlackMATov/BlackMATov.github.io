@@ -95,7 +95,7 @@
         window.addEventListener('click', function () { canvas.focus(); });
 
         canvas.addEventListener('webglcontextlost', function (e) {
-            statusText.textContent = 'The graphics context was lost, reload the page.';
+            statusText.textContent = "The graphics context was lost, reload the page.";
             e.preventDefault();
         });
 
@@ -210,13 +210,14 @@
             monitorRunDependencies: function (left) {
                 this.remainingDependencies = left;
                 this.totalDependencies = Math.max(this.totalDependencies, left);
-                Module.setStatus(left ? 'Loading... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : '');
+                Module.setStatus(left ? "Loading... ({done}/{total})"
+                    .replace('{done}', this.totalDependencies - left).replace('{total}', this.totalDependencies) : '');
             },
         };
 
         window.onerror = function () {
             statusText.style.display = 'flex';
-            statusText.textContent = 'Something went wrong, see the browser console.';
+            statusText.textContent = "Something went wrong, see the browser console.";
         };
 
         function loadScript(src, onload) {
