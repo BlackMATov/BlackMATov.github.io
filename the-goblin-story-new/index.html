@@ -173,6 +173,9 @@
         window.addEventListener('pagehide', saveRecords);
 
         var gameArguments = ['./game.love'];
+        if (window.matchMedia('(pointer: coarse)').matches) {
+            gameArguments.push('--touch');
+        }
         var pageOptions = { 'tv=0': '--no-tv', 'minimap=0': '--no-minimap', 'perf=1': '--perf' };
         for (var option in pageOptions) {
             if (new RegExp('[?&]' + option + '(&|$)').test(location.search)) {
